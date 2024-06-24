@@ -24,7 +24,7 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       
-      if (!req.body.SHEET_CODE === process.env.SHEET_CODE) {
+      if (req.body.SHEET_CODE != process.env.SHEET_CODE) {
         return res
           .status(403)
           .json({ success: false, errors: "Unable to Authenticate" });
@@ -43,9 +43,9 @@ const handler = async (req, res) => {
         CustomerTransaction: req.body.CustomerTransaction,
       });
 
-      await newCard.save();
-      console.log("okay");
-      return res.status(200).json({ success: true, msg: `${nextCustomerID} - Customer Added Successfully.` });
+      let student = await newCard.save();
+      console.log(student);
+      return res.status(200).json({ success: true, msg: `${nextCustomerID} - Customer Added Successfully.`, token:student.CustomerID });
     } catch (err) {
       console.error(err);
       res
