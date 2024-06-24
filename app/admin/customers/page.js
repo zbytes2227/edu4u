@@ -20,7 +20,7 @@ const Page = () => {
       card.CustomerEmail.toLowerCase().includes(searchQueryLowercase)
   );
   useEffect(() => {
-   auth();
+    auth();
     setLoading(true)
     fetch("/api/getCustomer")
       .then((response) => response.json())
@@ -54,7 +54,7 @@ const Page = () => {
     const fetch_api = await fetch("/api/delete/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({deltype : "customers", id: customerid})
+      body: JSON.stringify({ deltype: "customers", id: customerid })
     });
 
     const data = await fetch_api.json();
@@ -64,30 +64,30 @@ const Page = () => {
   };
 
 
- 
-const exportToCSV = (data) => {
-  const filteredData = data.map(({ __v, _id, ...rest }) => rest);
 
-  // Convert the filtered data to CSV
-  const csv = Papa.unparse(filteredData);
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  const link = document.createElement('a');
+  const exportToCSV = (data) => {
+    const filteredData = data.map(({ __v, _id, ...rest }) => rest);
 
-  if (link.download !== undefined) {
-    const url = URL.createObjectURL(blob);
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'order-report.csv');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  } else {
-    alert('Your browser does not support downloading files.');
+    // Convert the filtered data to CSV
+    const csv = Papa.unparse(filteredData);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'order-report.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      alert('Your browser does not support downloading files.');
+    }
+  };
+
+  function report() {
+    exportToCSV(Customers);
   }
-};
-
-function report(){
-exportToCSV(Customers);
-}
 
 
 
@@ -165,7 +165,7 @@ exportToCSV(Customers);
                     Transaction ID
                   </th>
                   <th scope="col" className="px-6 py-3">
-                   Share
+                    Share
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Action
@@ -189,7 +189,9 @@ exportToCSV(Customers);
                     <td className="px-6 py-4">{customer.CustomerPhone}</td>
                     <td className="px-6 py-4">{customer.CustomerWatsapp}</td>
                     <td className="px-6 py-4">{customer.CustomerTransaction}</td>
-                    <td className="px-6 py-4"><a href={`https://api.whatsapp.com/send/?phone=${customer.CustomerWatsapp}&text=${' Hi,' + customer.CustomerName +" Congratulations🥳, Your Token ID is "+ customer.CustomerID +"Token id, is important so please save it.  From - Sonu Sir Classes "}`} type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Share</a>
+                    const url = 
+
+                    <td className="px-6 py-4"><a href={`https://api.whatsapp.com/send/?phone=${customer.CustomerWatsapp}&text=${encodeURIComponent(`Hi ${customer.CustomerName}, Congratulations🥳! Your payment was successful. Your Token ID is ${customer.CustomerID}. This Token number is important, so please save it.\n\nनमस्ते ${customer.CustomerName}, बधाई हो🥳! आपका भुगतान सफल हुआ है। आपका टोकन आईडी है ${customer.CustomerID}। यह टोकन नंबर महत्वपूर्ण है, कृपया इसे सुरक्षित रखें।`)}`} type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Share</a>
                     </td>
                     <td className="px-6 py-4">
                       <a
@@ -199,13 +201,13 @@ exportToCSV(Customers);
                         Edit
                       </a>
                       <a
-                      onClick={()=>(deleteMe(customer.CustomerID))}
+                        onClick={() => (deleteMe(customer.CustomerID))}
                         className="font-medium text-red-600 hover:underline"
                       >
                         {" | "}Delete
                       </a>
                     </td>
-                    
+
                   </tr>
                 ))}
               </tbody>
