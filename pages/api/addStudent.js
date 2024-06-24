@@ -45,7 +45,7 @@ const handler = async (req, res) => {
 
       let student = await newCard.save();
       console.log(student);
-      return res.status(200).json({ success: true, msg: `${nextCustomerID} - Customer Added Successfully.`, token:student.CustomerID });
+      return res.status(200).json({ success: true,Name:student.CustomerName , msg: `${nextCustomerID} - Customer Added Successfully.`});
     } catch (err) {
       console.error(err);
       res
