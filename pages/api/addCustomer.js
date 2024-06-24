@@ -9,7 +9,7 @@ const generateCustomerID = async () => {
     const highestCustomer = await Customers.findOne({}, { CustomerID: 1 }).sort({ CustomerID: -1 });
     let nextID;
     if (highestCustomer) {
-      const highestIDNumber = parseInt(highestCustomer.CustomerID.slice(1));
+      const highestIDNumber = parseInt(highestCustomer.CustomerID.slice(3));
       nextID = `CXT${(highestIDNumber + 1).toString().padStart(3, "0")}`;
     } else {
       nextID = "CXT001";
