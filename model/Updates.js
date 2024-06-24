@@ -11,5 +11,5 @@ const Attendancechema = new mongoose.Schema(
 );
 
 mongoose.models = {};
-const Attendance = mongoose.model("Update", Attendancechema);
-module.exports = Attendance;
+const Update = mongoose.model("Updates", Attendancechema);
+module.exports = Update;

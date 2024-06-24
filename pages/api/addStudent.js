@@ -2,7 +2,7 @@ import Customers from "@/model/Customers";
 import connectDb from "../../middleware/mongoose";
 import { parse } from "cookie";
 import jwt from "jsonwebtoken";
-import Update from "@/model/Update";
+import Update from "@/model/Updates";
 
 // Function to generate customer ID in series
 const generateCustomerID = async () => {
@@ -43,8 +43,10 @@ const handler = async (req, res) => {
         CustomerWatsapp: req.body.CustomerWatsapp,
         CustomerTransaction: req.body.CustomerTransaction,
       });
+      let student = await newCard.save();
 
-      const addUpdate = new Update({
+
+      const addUpdate = new  Update({
         CustomerID: nextCustomerID,
         update: "Your Payment is successful."
       })
@@ -53,11 +55,11 @@ const handler = async (req, res) => {
         update: `Your Token is ${nextCustomerID}.`
       })
 
-
-      let student1 = await addUpdate.save();
-      let student2 = await addUpdate1.save();
-      let student = await newCard.save();
-      console.log(student);
+      if(student){
+        let student1 = await addUpdate.save();
+        let student2 = await addUpdate1.save();
+      }
+        console.log(student);
       return res.status(200).json({ success: true,Name:student.CustomerName , msg: `${nextCustomerID} - Customer Added Successfully.`});
     } catch (err) {
       console.error(err);
