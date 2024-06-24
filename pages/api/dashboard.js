@@ -4,7 +4,7 @@ import Orders from "@/model/Orders";
 import { parse } from "cookie";  import jwt from "jsonwebtoken";
 import Products from "@/model/Products";
 import Customers from "@/model/Customers";
-import Update from "@/model/Update";
+import Update from "@/model/Updates";
 
 
 const handler = async (req, res) => {

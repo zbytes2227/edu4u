@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "ADMIN Code Crfaters",
-  description: "Admin Panel for Code Crafters",
+  title: "Sonu sir classes",
+  description: "Sonu sir classes",
 };
 
 export default function RootLayout({ children }) {

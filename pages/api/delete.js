@@ -7,7 +7,7 @@ import { parse } from "cookie";
 import jwt from "jsonwebtoken";
 import Payments from "@/model/Payments";
 import Tracking from "@/model/Tracking";
-import Update from "@/model/Update";
+import Update from "@/model/Updates";
 
 const handler = async (req, res) => {
     if (req.method === "POST") {

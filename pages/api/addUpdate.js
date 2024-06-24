@@ -1,5 +1,5 @@
 
-import Update from "@/model/Update";
+import Update from "@/model/Updates";
 import connectDb from "../../middleware/mongoose";
 import { parse } from "cookie";
 import jwt from "jsonwebtoken";

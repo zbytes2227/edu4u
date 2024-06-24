@@ -1,7 +1,7 @@
 import Cards from "@/model/Cards";
 import connectDb from "../../middleware/mongoose";
 import { parse } from "cookie";  import jwt from "jsonwebtoken";
-import Update from "@/model/Update";
+import Update from "@/model/Updates";
 
 const handler = async (req, res) => {
     if (req.method === "POST") {
