@@ -164,7 +164,9 @@ exportToCSV(Customers);
                   <th scope="col" className="px-6 py-3">
                     Transaction ID
                   </th>
-            
+                  <th scope="col" className="px-6 py-3">
+                   Share
+                  </th>
                   <th scope="col" className="px-6 py-3">
                     Action
                   </th>
@@ -187,6 +189,8 @@ exportToCSV(Customers);
                     <td className="px-6 py-4">{customer.CustomerPhone}</td>
                     <td className="px-6 py-4">{customer.CustomerWatsapp}</td>
                     <td className="px-6 py-4">{customer.CustomerTransaction}</td>
+                    <td className="px-6 py-4"><a href={`https://api.whatsapp.com/send/?phone=${customer.CustomerWatsapp}&text=${' Hi,' + customer.CustomerName +" Congratulations🥳, Your Token ID is "+ customer.CustomerID +" From - Sonu Sir Classes "}`} type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Share</a>
+                    </td>
                     <td className="px-6 py-4">
                       <a
                         href={`customers/edit?id=${customer.CustomerID}`}
@@ -201,6 +205,7 @@ exportToCSV(Customers);
                         {" | "}Delete
                       </a>
                     </td>
+                    
                   </tr>
                 ))}
               </tbody>
