@@ -15,9 +15,7 @@ const Page = () => {
   const filteredCustomers = Customers.filter(
     (card) =>
       card.CustomerName.toLowerCase().includes(searchQueryLowercase) ||
-      card.CustomerPhone.toLowerCase().includes(searchQueryLowercase) ||
-      card.CustomerID.toLowerCase().includes(searchQueryLowercase) ||
-      card.CustomerEmail.toLowerCase().includes(searchQueryLowercase)
+      card.CustomerPhone.toLowerCase().includes(searchQueryLowercase)
   );
   useEffect(() => {
     auth();
@@ -193,13 +191,13 @@ const Page = () => {
                     <td className="px-6 py-4">{customer.CustomerWatsapp}</td>
                     <td className="px-6 py-4">{customer.CustomerTransaction}</td>
           
-                    <td className="px-6 py-4"><a href={`https://wa.me/send/?phone=${customer.CustomerWatsapp}&text=${`Hi ${customer.CustomerName}, Congratulations🥳! Your payment was successful. Your Token ID is ${customer.CustomerID}. This Token number is important, so please save it. Check Your Token Status :- https://edu4u.fgpcodecrafters.site/student?token=${customer.CustomerID} , 
+                    <td className="px-6 py-4"><a href={`https://api.whatsapp.com/send/?phone=+91${customer.CustomerWatsapp}&text=${`Hi ${customer.CustomerName}, Congratulations🥳! Your payment was successful. Your Token ID is ${customer.CustomerID}. This Token number is important, so please save it. Check Your Token Status :- https://edu4u.fgpcodecrafters.site/student?token=${customer.CustomerID} , 
                       नमस्ते ${customer.CustomerName}  , बधाई हो🥳! आपका भुगतान सफल हुआ है। आपका टोकन आईडी है ${customer.CustomerID} , यह टोकन नंबर महत्वपूर्ण है, कृपया इसे सुरक्षित रखें।`} From - SONU SIR CLASSES`} type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Share</a>
                     </td>
 
 
                     <td className="px-6 py-4">
-                    <button type="button" class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Update</button></td>
+                    <a href={`/update?id=${customer.CustomerID}`}  type="button" class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Update</a></td>
 
 
                     <td className="px-6 py-4">

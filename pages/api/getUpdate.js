@@ -19,6 +19,26 @@ if (req.method === "POST") {
       console.error(err);
       return res.status(500).json({ success: false, msg: "Server error. Contact the Developers." });
     }
+  }else if(req.method === "GET"){
+    try {
+      // Access query parameter 'id' from req.query
+      const id = req.query.id;
+
+      // Find all cards in the database based on id from query parameter
+      const allUpdates = await Update.find({ CustomerID: id });
+
+      // Return the found cards and customer name as a JSON response
+      return res.status(200).json({
+        success: true,
+        Updates: allUpdates,
+      });
+    } catch (err) {
+      console.error(err);
+      return res
+        .status(500)
+        .json({ success: false, msg: "Server error. Contact the Developers." });
+    }
+  
   }
 
 };
